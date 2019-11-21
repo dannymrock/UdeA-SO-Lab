@@ -8,7 +8,7 @@
             <td><h1>Universidad de Antioquia</h1>
             <h2>Laboratorio de Sistemas Operativos</h2></td>
             <td>
-            <img src="udea_escudo.svg" style="height:50%;" >
+            <img src="udea_escudo.svg" style="height:30%;" >
             </td>
         </tr>
     </table>
