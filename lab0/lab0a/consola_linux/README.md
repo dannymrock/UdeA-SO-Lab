@@ -334,3 +334,4 @@ Responda las siguientes preguntas:
 * [learnshell.org](http://www.learnshell.org/)
 * [Manual práctico de Linux con ejercicios](http://www.edu.xunta.gal/centros/iesfelixmuriel/system/files/manual_practico_de_linux_alumnos.pdf)
 * [Unix/Linux Reference Card](http://www.facom.ufu.br/~nascimento/Linux_Reference_Card.pdf)
+* [Introducción al sistema operativo GNU/Linux](http://openaccess.uoc.edu/webapps/o2/bitstream/10609/61286/1/Administraci%C3%B3n%20de%20sistemas%20GNU_Linux_M%C3%B3dulo1_Introducci%C3%B3n%20al%20sistema%20operativo%20GNU_Linux.pdf)

@@ -1,0 +1,12 @@
+RESPUESTAS
+
+Ejercicio 2:
+- ¿Que hacen los parametros argc y argv?
+
+...
+
+
+Ejercicio 3:
+
+...
+
