@@ -19,7 +19,7 @@ ls
 
 Para profundizar mas sobre la información que se tratara a continuación, puede consultar los siguientes links:
 1. [GCC and Make - Compiling, Linking and Building C/C++ Applications](https://www.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html)
-2. [Manejo básico del GNU Compiler Collection (GCC)](https://github.com/repos-SO-UdeA/laboratorios/tree/master/lab0/teoria/parte2/teoria)
+2. [Manejo básico del GNU Compiler Collection (GCC)](https://github.com/dannymrock/UdeA-SO-Lab/tree/master/lab0/lab0a/compilador_gcc/opcional)
 3. [GCC and Make - Compiling, Linking and Building C/C++ Applications](https://www3.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html)
 4. [Una Introducción a GCC](http://www.nongnu.org/gccintro-es/gccintro.es.pdf)
 
@@ -255,6 +255,12 @@ Una vez reponda las preguntas realizar el respectivo commit.
 4. https://jlospinoso.github.io/developing/software/software%20engineering/reverse%20engineering/assembly/2015/03/06/reversing-with-ida.html
 5. https://www.perspectiverisk.com/intro-to-basic-disassembly-reverse-engineering/
 6. https://www.thegeekstuff.com/2012/03/linux-nm-command/
+7. https://guides.github.com/activities/hello-world/
+8. https://github.com/flowsta/github
+9. https://guides.github.com/
+10. https://lab.github.com/
+11. https://www.youtube.com/githubguides?reload=9
+
 
 
 
