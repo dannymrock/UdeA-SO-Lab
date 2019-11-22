@@ -332,3 +332,5 @@ Responda las siguientes preguntas:
 * [C Programming: Language Foundations](https://www.edx.org/course/c-programming-language-foundations)
 * [Unix Terminal Online](https://www.tutorialspoint.com/unix_terminal_online.php) 
 * [learnshell.org](http://www.learnshell.org/)
+* [Manual práctico de Linux con ejercicios](http://www.edu.xunta.gal/centros/iesfelixmuriel/system/files/manual_practico_de_linux_alumnos.pdf)
+* [Unix/Linux Reference Card](http://www.facom.ufu.br/~nascimento/Linux_Reference_Card.pdf)

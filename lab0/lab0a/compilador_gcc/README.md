@@ -3,6 +3,13 @@
 > **Objetivos**
 > * Abordar el manejo del GCC como herramienta para la compilación de código en lenguaje de programación C.
 
+## Material teórico en la web 
+
+El siguiente material es una recopilación de diferente material online. Sin embargo, de todo este material se destaca los siguientes:
+1. [GCC and Make - Compiling, Linking and Building
+C/C++ Applications](https://www.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html)
+2. [An Introduction to GCC](https://tfetimes.com/wp-content/uploads/2015/09/An_Introduction_to_GCC-Brian_Gough.pdf)
+
 ## 1. Aspectos generales sobre el GCC
 GCC es un compilador rápido, muy flexible, y riguroso con el estándar de C ANSI. Como ejemplo de sus múltiples virtudes, diremos que gcc puede funcionar como compilador cruzado para un gran número de arquitecturas distintas. GCC no proporciona un entorno de desarrollo (IDE), es sólo una herramienta que se utiliza en el proceso de creación de un programa. GCC se encarga de realizar el preprocesado del código, la compilación, y el enlazado. Dicho de otra manera, nosotros proporcionamos a GCC nuestro código fuente en el lenguaje de programación C, y él nos devuelve un archivo binario compilado para nuestra arquitectura.
 
@@ -95,7 +102,7 @@ Después de que el programa se editó, se verifica que si se halla guardado en e
 4. **Compilar el programa**: Para compilar el programa se usa el comando gcc de la siguiente manera:
 
 >  
-> ``` gcc archivoFuente –o nombreEjecutable ```
+> ``` gcc archivoFuente.c –o nombreEjecutable ```
 >
 > Dónde:
 > * **archivoFuente**: Archivo de extensión **.c** que será compilado y enlazado.
@@ -104,7 +111,7 @@ Después de que el programa se editó, se verifica que si se halla guardado en e
 > La anterior forma de uso del comando gcc, suele ser la más sencilla para compilar y enlazar un archivo fuente (archivo 
 > **.c**) de modo que se genera un ejecutable con nombre dado  por **nombreEjecutable**. Sin embargo este comando permite 
 > muchas más posibilidades las cuales para más información pueden ser consultadas en: 
-> http://www.mhe.es/universidad/informatica/8448198441/archivos/apendice_general_1.pdf 
+> [Compilación de Programas C en UNIX y LINUX](http://www.mhe.es/universidad/informatica/8448198441/archivos/apendice_general_1.pdf) 
 
 En la siguiente figura se muestra el empleo de este comando en nuestro caso particular. Nótese que **archivoFuente=ejemplo1.c** y **nombreEjecutable=exe1** para nuestro caso.
 
@@ -126,7 +133,9 @@ Como  se muestra en la figura anterior, si la compilación esta buena, el result
 
 **Figura 9**. Compilacion del programa
 
-## 3. GCC con un poco más de detalle
+## 3. GCC con un poco más de detalle 
+
+> **Nota**: El estudio de esta parte es opcional
 
 El proceso de obtener un archivo ejecutable (entendible por la máquina) a partir de un archivo fuente (escrito en lenguaje de programación y entendido por el programador) involucra 4 etapas (ver figura 10), las cuales son principalmente:
 1. Pre-procesamiento.
@@ -137,7 +146,6 @@ El proceso de obtener un archivo ejecutable (entendible por la máquina) a parti
 ![proceso_etapas](./imagenes/compilacion_proceso.png)
 
 **Figura 10**. Etapas del proceso de compilacion 
-
 
 En las seccion anterior, se llegó a la obtención del ejecutable directamente mediante la ejecución de un solo comando, sin embargo en esta parte se analizaán cada una de estas etapas y las opciones involucradas en la herramienta GCC asociadas. 
 
@@ -161,7 +169,7 @@ int main(int argc, char *argv[])
 ### 3.2. Compilando el archivo por pasos
 A continuación se muestra el proceso de compilación por pasos y se resalta el archivo generado en cada uno de ellos.
 
-#### 1 Pre-procesado
+#### 1. Pre-procesado
 En esta etapa se interpretan las directivas al pre-procesador y se eliminan comentarios si los hay. En lo que respecta a las directivas del preprocesador, estas son sustituidas en el código por su valor en todos los lugares donde aparece su nombre. 
 
 Las directivas del pre-procesador comienzan con #, permiten buenas prácticas de programación. Estas se usan principalmente para:
@@ -216,7 +224,7 @@ int main(int argc, char *argv[])
   return 0;
 }
 ```
-#### Preguntas:
+**Preguntas**:
 * ¿Qué cambios nota en hello.i respecto a hello.c?
 
 #### 2. Compilación
@@ -335,7 +343,7 @@ En la siguiente figura se muestra el empleo de este comando:
 
 ![enlazado](./imagenes/enlazado_corregido.png)	
 
-**Figura 14**. Resultado del comando gcc con la opcion para realizar el proceso de enlazado partiendo del codigo objeto
+**Figura 14**. Resultado del comando gcc con la opcion para realizar el proceso de enlazado partiendo del codigo objeto.
 
 
 Para nuestro caso, se ejecutaría el comando anterior de la siguiente manera:
@@ -358,7 +366,14 @@ Hello world!!!
 ``` 
 Para visualizar la estructura del ejecutable se utilizan comandos como ```objdump```, ```readelf``` o ```nm``` (algunos ya mencionados), la interpretación de los resultados arrojados por comandos como estos es de vital importancia para hacer tareas de ingeniería inversa.
 
-#### Repaso de los comandos anteriores
+#### 5. Repaso de los comandos anteriores
+
+La siguiente figura tomada de [GCC and Make - Compiling, Linking and Building
+C/C++ Applications](https://www.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html) resume los pasos anteriormente explicados:
+
+![etapas_compilacion](https://www.ntu.edu.sg/home/ehchua/programming/cpp/images/GCC_CompilationProcess.png)
+**Figura 15**. Resumen del proceso completo de compilación y enlazado.
+
 La siguiente tabla resume los comandos aplicados anteriormente:
 
 | Paso | Acción            | Comando                                     | Ejemplo                   | Archivo generado |
@@ -368,14 +383,14 @@ La siguiente tabla resume los comandos aplicados anteriormente:
 | 3    | Ensamblado        | gcc -c archivoFuente <-o archivoResultante> | gcc -c hello.c            | hello.o          |
 | 4    | Enlazado          | gcc archivoObjeto <-o ejecutable>           | gcc hello.o -o hello.out  | hello.out        |
 
-#### Todo en un solo paso (generando como resultado solo el archivo ejecutable)
-Al principio de esta guía, se mostró como a partir del comando gcc se podía generar el ejecutable a partir del codigo objeto, a modo de repaso el comando es: ///Danny: Revisar redacción, no entendí
+#### 6. Todo en un solo paso (generando como resultado solo el archivo ejecutable)
+Al principio de esta guía, se mostró como a partir del comando gcc se podía generar el ejecutable a partir del codigo fuente, a modo de repaso el comando es: 
 
 ``` gcc archivoFuente –o nombreEjecutable ```
 
 Para este caso específico se tiene lo siguiente:
 
-``` gcc hello.c –o hello.out ```
+``` gcc hello.c -o hello.out ```
 
 Es de notar que el comando anterior realiza de una vez todos los cuatro pasos anteriormente citados eliminando los archivos intermedios resultantes en el proceso (hello.i, hello.s, hello.o)
 
@@ -391,7 +406,7 @@ Cuando se ejecuta el comando ```gcc``` con la opción ```-save-temps``` los arch
 
 Para nuestro caso específico el comando será:
 
-``` gcc -save-temps hello.c –o hello.out ```
+``` gcc -save-temps hello.c -o hello.out ```
 
 Si se verifica la lista de archivos con el comando ls (suponiendo que solo existe el archivo fuente en el directorio actual) el resultado será el archivo ejecutable junto con los archivos intermedios resultantes de cada etapa.
 
@@ -400,18 +415,17 @@ A continuación mostramos algunas de las opciones más habituales al usar gcc (a
 
 | Opcion | Descripción            |
 |------|-------------------|
-| -help | Indica a gcc que muestre su salida de ayuda (muy reducida).|
-| -o <file> | El archivo ejecutable generado por gcc es por defecto a.out. Mediante este modificador, le especificamos el nombre del ejecutable.|
-| -Wall | No omite la detección de ningún warning. Por defecto, gcc omite una colección de warnings  "poco importantes".|
-| -g | Incluye en el binario información necesaria para utilizar un depurador posteriormente.|
-| -O <nivel> | Indica a gcc que utilice optimizaciones en el código. Los niveles posibles van desde 0 (no optimizar) hasta 3 (optimización máxima). Utilizar el optimizador aumenta el tiempo de compilación, pero suele generar ejecutables más rápidos.|
-| -E | Sólo realiza la fase del preprocesador, no compila, ni ensambla, ni enlaza.|
-| -S | Preprocesa y compila, pero no ensambla ni enlaza.|
-| -c | Preprocesa, compila y ensambla, pero no enlaza.|
-| -I <dir> | Especifica un directorio adicional donde gcc debe buscar los archivos de cabecera indicados en el código fuente.|
-| -L <dir> | Especifica un directorio adicional donde gcc debe buscar las librerías necesarias en el proceso de enlazado.|
-| -L <dir> | Especifica un directorio adicional donde gcc debe buscar las librerías necesarias en el proceso de enlazado.|
-| -l<library> | Especifica el nombre de una librería adicional que deberá ser utilizada en el proceso de enlazado.|
+| `-help` | Indica a gcc que muestre su salida de ayuda (muy reducida).|
+| `-o <file>` | El archivo ejecutable generado por gcc es por defecto a.out. Mediante este modificador, le especificamos el nombre del ejecutable.|
+| `-Wall` | No omite la detección de ningún warning. Por defecto, gcc omite una colección de warnings  "poco importantes".|
+| `-g` | Incluye en el binario información necesaria para utilizar un depurador posteriormente.|
+| `-O <nivel>` | Indica a gcc que utilice optimizaciones en el código. Los niveles posibles van desde 0 (no optimizar) hasta 3 (optimización máxima). Utilizar el optimizador aumenta el tiempo de compilación, pero suele generar ejecutables más rápidos.|
+| `-E` | Sólo realiza la fase del preprocesador, no compila, ni ensambla, ni enlaza.|
+| `-S` | Preprocesa y compila, pero no ensambla ni enlaza.|
+| `-c` | Preprocesa, compila y ensambla, pero no enlaza.|
+| `-I <dir>` | Especifica un directorio adicional donde gcc debe buscar los archivos de cabecera indicados en el código fuente.|
+| `-L <dir>` | Especifica un directorio adicional donde gcc debe buscar las librerías necesarias en el proceso de enlazado.|
+| `-l<library>` | Especifica el nombre de una librería adicional que deberá ser utilizada en el proceso de enlazado.|
 
 La colección completa de modificadores a utilizar con gcc se encuentra en su página de manual, **man gcc**, o también si esta muy embalado puede llamar a nuestro santo favorito **google**.
 
@@ -422,3 +436,11 @@ La colección completa de modificadores a utilizar con gcc se encuentra en su p�
 * https://jlospinoso.github.io/developing/software/software%20engineering/reverse%20engineering/assembly/2015/03/06/reversing-with-ida.html
 * https://www.perspectiverisk.com/intro-to-basic-disassembly-reverse-engineering/
 * https://www.thegeekstuff.com/2012/03/linux-nm-command/
+* https://www.learn-c.org/
+* https://www.learnshell.org/
+* https://sensperiodit.files.wordpress.com/2011/04/hagen-the-definitive-guide-to-gcc-2e-apress-2006.pdf
+* https://tfetimes.com/wp-content/uploads/2015/09/An_Introduction_to_GCC-Brian_Gough.pdf
+* http://www.cheat-sheets.org/
+* http://cslibrary.stanford.edu/107/UnixProgrammingTools.pdf
+* https://www.it.uc3m.es/pbasanta/asng/course_notes/ctut.pdf
+* https://github.com/facom
