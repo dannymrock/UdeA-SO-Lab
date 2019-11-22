@@ -34,7 +34,7 @@ En linux todo es un archivo (directorios, archivos como tal y dispositivos). En 
 Secuencia de directorios anidados separados con el carácter slash (/) con un archivo o directorio al final.
 
 [Forma típica de una ruta](http://etutorials.org/shared/images/tutorials/tutorial_99/541331fg0704.jpg)
-Imagen tomada de: http://bit.ly/2BDqTQZ
+Imagen tomada de: [Understanding the Linux File System](http://bit.ly/2BDqTQZ)
 
 ### Directorios especiales ###
 La siguiente tabla muestra los símbolos especiales empleados en el sistema de archivos linux y los directorios a los cuales estos hacen referencia.
@@ -112,17 +112,17 @@ El comando `ls` lista los archivos de un directorio, en orden alfanumérico, exc
 | Comando | Efecto                                                                                |
 |---------|---------------------------------------------------------------------------------------|
 | `ls <opciones> <dir>`	| Lista archivos del directorio <dir>, dadas las <opciones> ingresadas por el usuario |
-| ls                  | Lista los archivos del directorio actual                                  |
-| ls  /ruta/dir       | Lista los archivos de un directorio específico	                          |
+| `ls`                  | Lista los archivos del directorio actual                                  |
+| `ls  /ruta/dir`      | Lista los archivos de un directorio específico	                          |
 
 Ambos comandos pueden ser modificados para mostrar información específica, las opciones más usadas son:
 
 | Comando | Efecto                                                             |
 |---------|--------------------------------------------------------------------|
-| ls -a 	| Lista todos los archivos y carpetas incluyendo **ocultos**            |
-| ls -l   | Lista las **propiedades** de los archivos                             |
-| ls -t   | Lista **ordenando** por fecha de modificación	                       |
-| ls –m   | Lista en **una sóla línea** y separados por comas                     |
+| `ls -a` 	| Lista todos los archivos y carpetas incluyendo **ocultos**            |
+| `ls -l`   | Lista las **propiedades** de los archivos                             |
+| `ls -t`   | Lista **ordenando** por fecha de modificación	                       |
+| `ls –m`   | Lista en **una sóla línea** y separados por comas                     |
    
 ### 3.2. Manual
 ```
@@ -149,10 +149,10 @@ Algunas de las opciones disponibles para el comando cd son:
 
 | Comando | Efecto                                                             |
 |---------|--------------------------------------------------------------------|
-| cd <dir> 	| Cambia el directorio de trabajo a **dir**             |
-| cd -   | Cambia el directorio de trabajo al **anterior** directorio de trabajo válido |
-| cd ..   | 	Cambia el directorio de trabajo al directorio **padre**	                       |
-| cd ~   | Cambia el directorio de trabajo al directorio **home** del usuario                 |
+| `cd <dir>` 	| Cambia el directorio de trabajo a **dir**             |
+| `cd - `  | Cambia el directorio de trabajo al **anterior** directorio de trabajo válido |
+| `cd ..`   | 	Cambia el directorio de trabajo al directorio **padre**	                       |
+| `cd ~`   | Cambia el directorio de trabajo al directorio **home** del usuario                 |
 
 La Figura 4 muestra un ejemplo del uso del comando cd. Para mayor información puede consultar el manual del comando: ```man cd```.
 
@@ -180,9 +180,9 @@ Si se quiere borrar un directorio en Linux, se puede hacer uso del comando ```rm
 
 | Opción | Efecto                                                             |
 |---------|--------------------------------------------------------------------|
-| -r 	| Para un **borrado recursivo** |
-| -f   | Para un **borrado forzado**. No solicita autorización para cada archivo  |
-| -i   | 	Para **pedir confirmación**. Solicita autorización por cada archivo borrado |
+| `-r` 	| Para un **borrado recursivo** |
+| `-f`   | Para un **borrado forzado**. No solicita autorización para cada archivo  |
+| `-i`   | 	Para **pedir confirmación**. Solicita autorización por cada archivo borrado |
 
 La Figura 6 muestra un ejemplo del uso del comando rm. Para mayor información puede consultar el manual del comando: ```man rm```.
 
@@ -195,10 +195,10 @@ Para copiar directorios y archivos se puede usar el comando ```cp```. La siguien
 
 | Forma de uso | Descripción                                                            |
 |---------|--------------------------------------------------------------------|
-| cp <source_file> <target_file> | Copia el archivo fuente (source_file) al destino (target_file) |
-| cp file1 file2 file3 ... dir   | Copia los archivos al directorio destino <dir> (último argumento)  |
-| cp -­i  | (Copiado interactivo) Espera por la confirmacion del usuario si el archivo destino ya existe  |
-| cp ­-r <source_dir> <target_dir>  | (Copiado recursivo) Copia el directorio con los subdirectorios y archivos que éste contenga  |
+| `cp <source_file> <target_file>` | Copia el archivo fuente (source_file) al destino (target_file) |
+| `cp file1 file2 file3 ... dir`   | Copia los archivos al directorio destino <dir> (último argumento)  |
+| `cp -­i`  | (Copiado interactivo) Espera por la confirmacion del usuario si el archivo destino ya existe  |
+| `cp ­-r <source_dir> <target_dir>`  | (Copiado recursivo) Copia el directorio con los subdirectorios y archivos que éste contenga  |
 
 La Figura 7 muestra un ejemplo del uso del comando cp. Para mayor información puede consultar el manual del comando: ```man cp```.
 
@@ -281,7 +281,7 @@ Responda las siguientes preguntas:
 * ¿Cuál es el comando (o secuencia de comandos) para crear 2 directorios llamados dir1 y dir2 dentro de work? Como se elimina el directorio dir1 asumiendo que este no esta vacio? .
 * ¿Cuál es el comando (o conjunto de comandos ) para listar el contenido del directorio jono con sus propiedades y archivos ocultos?
 
-** Ejercicio 2**: Dada la siguiente figura.
+**Ejercicio 2**: Dada la siguiente figura.
 
 ![figura 11](./imagenes/ejercicio_refuerzo2.png)
 
@@ -299,7 +299,7 @@ Responda las siguientes preguntas:
 * ¿Cuál es comando para pasar de e a d (de ambas formas)?
 * ¿Cuál es comando para pasar de c a b (de ambas formas)?
 
-** Ejercicio 3**: Dada la siguiente figura.
+**Ejercicio 3**: Dada la siguiente figura.
 
 ![figura 12](./imagenes/ejercicio_refuerzo3.png)
 
