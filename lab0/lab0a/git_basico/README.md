@@ -146,7 +146,10 @@ Si analiza todo usted podra notar que el readme ya se encuentra actualizado tant
 5. [Teacher training to master Git and GitHub](https://education.github.com/teachers/advisors)
 6. [Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)
 7. [Git Cheatsheet - an interaction from NDP Software](http://ndpsoftware.com/git-cheatsheet.html#loc=;)
-
+8. [Git basics - Atlasian](https://www.atlassian.com/git)
+9. [Learn Git Branching](https://learngitbranching.js.org/)
+10. [Resources to learn Git](https://try.github.io/)
+11. [Git simulator](http://git-school.github.io/visualizing-git/)
 
 
 
