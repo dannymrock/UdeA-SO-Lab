@@ -10,25 +10,32 @@
 > * Editor de texto o IDE
 
 ## Notas de utilidad ##
-En internet se encuentran innumerables recursos para simular el comportamiento de la terminal algunos de utilidad son:
-* [Unix Terminal Online](https://www.tutorialspoint.com/unix_terminal_online.php) 
-* [learnshell.org](http://www.learnshell.org/)
+En internet se encuentran innumerables recursos pero se resaltan los siguientes 2 recursos:
+* [The Unix and GNU/Linux command line](https://bootlin.com/doc/legacy/command-line/unix_linux_introduction.pdf)
+* [GNU/Linux command memento](https://bootlin.com/doc/legacy/command-line/command_memento.pdf)
+
+---
 
 ## 1. Introducción al manejo de la consola GNU/Linux ##
+
 La consola o terminal (shell) es un programa informático donde el usuario interactúa con el sistema operativo mediante una ventana que espera órdenes escritas desde el teclado.
 La consola permite controlar completamente un equipo con un sistema operativo GNU/Linux, es una interfaz muy poderosa pero a la vez muy liviana (mucho más simple que la interfaz gráfica).
 En GNU/Linux la consola es esencial, puesto que permite realizar un gran número de acciones para la gestión del sistema operativo, por ejemplo, dar o quitar permisos, configurar e instalar drivers, enviar señales (posiblemente de terminación) a procesos y muchas otras acciones de gestión y control.
+
 Cualquier usuario puede usar la consola, debido a que es un programa más del sistema operativo. Es de notar que se debe tener cuidado con la ejecución de comandos, ya que si ejecutamos algún comando sin conocimiento y este resulta peligroso para nuestro sistema, podríamos dejar el equipo inutilizable, borrar archivos necesarios, etc.
+
 Existen un gran número de comandos disponibles, y es casi imposible saberlos todos de memoria, pero si es recomendable conocer bien los más usados. A la hora de hacer configuraciones, instalaciones, modificaciones en el sistema operativo es necesario tomar precauciones, como generar respaldo de información o consultar el correcto uso del comando a utilizar.
-Al ejecutar los comandos en la consola, éstos se ejecutan usando como directorio de trabajo la carpeta actual (/home/<user> por defecto), por tanto, si se quiere realizar una acción sobre otra carpeta basta con poner la ruta después del comando.
+Al ejecutar los comandos en la consola, éstos se ejecutan usando como directorio de trabajo la carpeta actual (`/home/<user>` por defecto), por tanto, si se quiere realizar una acción sobre otra carpeta basta con poner la ruta después del comando.
+
+---
 
 ## 2. Organización del sistema de archivos ## 
-En linux todo es un archivo (directorios, archivos como tal y dispositivos). En linux el sistema de archivos se organiza en una estructura jerárquica a modo de arbol, siendo el nivel más alto del sistema el directorio raíz (/) tal y como se muestra en la siguiente figura.
+
+En linux todo es un archivo (directorios, archivos como tal y dispositivos). En linux el sistema de archivos se organiza en una estructura jerárquica a modo de arbol, siendo el nivel más alto del sistema el directorio raíz (`/`) tal y como se muestra en la siguiente figura.
 
 ![Sistema de archivos linux](http://etutorials.org/shared/images/tutorials/tutorial_99/541331fg0703.jpg)
 
 **Figura 1**. Esquema resumido de la jerarquía del sistema de archivos en GNU/Linux. (Imagen tomada de: [Understanding the Linux File System](http://bit.ly/2BDqTQZ))
-
 
 ### Rutas ###
 Secuencia de directorios anidados separados con el carácter slash (/) con un archivo o directorio al final.
@@ -41,9 +48,9 @@ La siguiente tabla muestra los símbolos especiales empleados en el sistema de a
 
 | Símbolo | Directorio especial asociado                                    |
 |---------|-----------------------------------------------------------------|
-| /       | Directorio raíz                                                 |
-| ./      | Directorio actual                                               |
-| ../     | Directorio padre del directorio en el cual me encuentro ubicado |
+| `/`       | Directorio raíz                                                 |
+| `./`      | Directorio actual                                               |
+| `../`     | Directorio padre del directorio en el cual me encuentro ubicado |
 
 
 ### Tipos de rutas ###
@@ -51,8 +58,8 @@ Existen 2 tipos de rutas:
 * **Rutas Absolutas**: Rutas vistas desde el directorio raíz.
 * **Rutas Relativas**: Rutas vistas desde un directorio en particular.
 
----
-### Ejemplo 1: ###
+
+#### Ejemplo 1: ####
 Dada la siguiente imagen:
 
 ![figura 2](./imagenes/ejemplo1.png)
@@ -308,17 +315,20 @@ Responda las siguientes preguntas:
 ¿Cuál es la diferencia entre las 2 salidas de consola?
 
 
-## 5. Ejercicios bonus:
-1. Las preguntas teóricas dentro de lo demas XXXXXX
-2. Apoyandose en los documentos [Summary of most useful commands](https://free-electrons.com/doc/legacy/command-line/command_memento.pdf) y [The Unix and  GNU/Linux  command line](https://free-electrons.com/doc/legacy/command-line/unix_linux_introduction.pdf) hacer una breve descripción con ejemplos de los comandos asignados por el docente del curso. Si es neceseario apoyese en el manual o en recursos de internet para dar un ejemplo claro. El objetivo es mejorar la información contenida en esta página con lo consultado por usted para mejorar la guía a futuro.
-3. Realizar el curso: [Introduction to Shell for Data Science](https://www.datacamp.com/courses/introduction-to-shell-for-data-science).
-4. Punto de bonus: resolver los ejercicios de la página [learnshell.org](http://www.learnshell.org/)
+## 5. Entregable
+1. Realizar el curso: [Introduction to Shell for Data Science](https://www.datacamp.com/courses/introduction-to-shell-for-data-science) evidenciando el trabajo llevado a cabo.
+2. **Punto opcional (por si quiere aprender mas)**:Resolver los ejercicios de la página [learnshell.org](http://www.learnshell.org/)
 
-## 5. Referencias
+## 6. Referencias
 * [Understanding the Linux File System](http://bit.ly/2BDqTQZ)
-* https://free-electrons.com/doc/legacy/command-line/unix_linux_introduction.pdf
-* https://free-electrons.com/doc/legacy/command-line/command_memento.pdf
-* https://www.datacamp.com/community/tutorials/shell-commands-data-scientist
-* https://www.dropbox.com/s/yu4es9coqbwd100/GuiaLab1.pdf?dl=0
-* http://linuxcommand.org/
-* https://autellinux.com/2013/09/04/online-simulator-in-linux-practice-linux-commands/
+* [The Unix and GNU/Linux command line](https://bootlin.com/doc/legacy/command-line/unix_linux_introduction.pdf)
+* [GNU/Linux command memento](https://bootlin.com/doc/legacy/command-line/command_memento.pdf)
+* [8 Useful Shell Commands For Data Science](https://www.datacamp.com/community/tutorials/shell-commands-data-scientist)
+* [Top 5 Free Courses to Learn Linux Commands in Depth](https://dzone.com/articles/5-free-courses-to-learn-linux-commands-in-depth)
+* [Linux Command Line Basics - Getting Started with the Shell](https://www.udacity.com/course/linux-command-line-basics--ud595)
+* [Top 5 Free Linux Courses for Programmers](https://hackernoon.com/top-5-free-linux-courses-for-programmers-4a433b4edade)
+* [https://www.edx.org/course/introduction-to-linux](https://www.edx.org/course/introduction-to-linux)
+* [Introducción a la programación en C: Tipos de datos y estructuras](https://www.edx.org/course/introduccion-a-la-programacion-en-c-tipos-de-datos)
+* [C Programming: Language Foundations](https://www.edx.org/course/c-programming-language-foundations)
+* [Unix Terminal Online](https://www.tutorialspoint.com/unix_terminal_online.php) 
+* [learnshell.org](http://www.learnshell.org/)
