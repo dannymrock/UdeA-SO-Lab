@@ -2,20 +2,8 @@
 
 ## Objetivos ##
 
-> 1. Comprender y usar el lenguaje de progrmación C.
-> 2. Aprender a emplear de manera basica el GCC (GNU compile colection) para codificar y compilar programas en C.
-> 3. Codificar aplicaciones en C haciendo esta herramienta.
-
-## Antes de empezar ##
-
-Antes de empezar el laboratorio, acepte el link en el cual se muestra la tarea. Luego de esto, elija un directorio de trabajo apropidado y clone alli la tarea. Suponiendo que el directorio de trabajo se llamase: ```/home/don_ramon/Documents/sistemas_operativos/lab_C``` y el repositorio correspondiente estuviera en https://github.com/so-udea/intro-C, los comandos a aplicar seran similares a los mostrados a continuación:
-
-```bash
-cd /home/don_ramon/Documents/sistemas_operativos/lab_C
-git clone https://github.com/so-udea/intro-C.git
-cd intro-C
-ls
-```
+> 1. Retomar los conteptos adquiridos hasta el momento.
+> 2. Aplicar lo aprendido en el desarrollo de aplicaciones para los laboratorios posteriores del curso.
 
 Para profundizar mas sobre la información que se tratara a continuación, puede consultar los siguientes links:
 1. [GCC and Make - Compiling, Linking and Building C/C++ Applications](https://www.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html)
