@@ -13,3 +13,6 @@
 
 En el siguiente [enlace](https://github.com/dannymrock/UdeA-SO-Lab/tree/master/lab0/lab0b/ejemplos) puede encontrar una lista de ejemplos para poder analizar, compilar y ejecutar.
 
+## Actividad a entregar
+
+Haga un **fork** del siguiente [repositorio](https://github.com/tigarto/Udea-SO-Lab_introC), desarrollelo localmente, actualicelo y cuando lo acabe, coloquelo como link de respuesta en el lugar destinado en el classroom para la entrega de la actividad.
