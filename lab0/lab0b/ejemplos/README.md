@@ -7,7 +7,7 @@
 ## Lecturas opcionales previas
 
 Se recomienda antes de empezar revisar los siguientes enlaces:
-1. **Teoria sobre la introduccion al lenguaje C**: La cual puede ser accedida en el siguiente [enlace](https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte1/intro_C_basico.ipynb).
+1. **Teoria sobre la introduccion al lenguaje C**: La cual puede ser accedida en el siguiente [enlace](https://github.com/dannymrock/UdeA-SO-Lab/blob/master/lab0/lab0b/parte1/intro_C_basico.ipynb).
 
 ## Ejemplos resueltos
 
