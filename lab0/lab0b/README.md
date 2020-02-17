@@ -9,4 +9,7 @@
 5. [Memoria dinámica en C](https://github.com/dannymrock/UdeA-SO-Lab/blob/master/lab0/lab0b/parte5/memoria_dinamica.ipynb)
 6. [Manejo de archivos en C](https://github.com/dannymrock/UdeA-SO-Lab/blob/master/lab0/lab0b/parte6/README.md).
 
+## Ejemplos
+
+En el siguiente [enlace](https://github.com/dannymrock/UdeA-SO-Lab/tree/master/lab0/lab0b/ejemplos) puede encontrar una lista de ejemplos para poder analizar, compilar y ejecutar.
 
