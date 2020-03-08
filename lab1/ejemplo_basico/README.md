@@ -35,6 +35,10 @@ gcc -Wall example1.c -o example1.out
 ./example1.out
 ```
 
+La salida en pantalla tras ejecutar el código anterior se muestra a continuación:
+
+![ejemplo1](./images/salida_ejemplo1.jpg)
+
 **Llamadas**: A continuación se muestra el diagrama de llamadas del ejemplo anterior:
 
 ![ex1_calls](./images/ex1_calls.png)
@@ -100,6 +104,10 @@ int main (void){
 gcc -Wall example2.c -o example2.out
 ./example2.out
 ```
+
+La salida en pantalla tras ejecutar el código anterior se muestra a continuación:
+
+![ejemplo2](./images/salida_ejemplo2.jpg)
 
 **Llamadas**: El diagrama de llamadas se muestra a continuación. Notese que una vez el proceso hijo se crea este sigue una existencia a parte del proceso padre, pero en ambos casos ambos estaran relacionados el mismo codigo ejecutable (**ejemplo2.out**). 
 
@@ -176,6 +184,10 @@ int main (void){
 gcc -Wall example3.c -o example3.out
 ./example3.out
 ```
+
+La salida en pantalla tras ejecutar el código anterior se muestra a continuación:
+
+![ejemplo3](./images/salida_ejemplo3.jpg)
 
 **Llamadas**: El diagrama de llamadas que se muestra a continuación muestr que el padre espera a que el hijo culmine.
 
@@ -266,6 +278,10 @@ gcc -Wall /example4_h.c -o /example4_h.out
 ```bash
 ./example4_p.out
 ```
+
+La salida en pantalla tras ejecutar el código anterior se muestra a continuación; notese que solo se llama al proceso padre:
+
+![ejemplo4](./images/salida_ejemplo4.jpg)
 
 **Llamadas**: Notese que en el diagrama siguiente que una vez el proceso hijo llama al ```exec``` la imagen del ejecutable procediente del ```fork``` (la misma del padre) es reemplazada por la imagen del ejecutable pasada como parametro a la llamada ```exec```, la cual suele ser distinta que la del padre.
 
