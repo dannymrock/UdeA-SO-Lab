@@ -28,6 +28,13 @@ int main (void){
 }
 ```
 
+**Compilación y ejecución**: 
+
+```bash
+gcc -Wall example1.c -o example1.out
+./example1.out
+```
+
 **Llamadas**: A continuación se muestra el diagrama de llamadas del ejemplo anterior:
 
 ![ex1_calls](./images/ex1_calls.png)
