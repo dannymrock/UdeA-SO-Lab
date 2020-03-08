@@ -199,6 +199,10 @@ Este grupo de funciones permite la creacion y manipulacion del estado de los pro
 
 Permite crear procesos: Se realiza una clonación del proceso que lo solicita (conocido como proceso padre). El nuevo proceso se conoce como proceso hijo.
 
+|s|s|
+|:--|:--|
+|q|q|
+
 ### int execl (char *path, char *arg, ...) ###
 
 Familia de funciones que permiten cambiar el programa que está ejecutando el proceso.
