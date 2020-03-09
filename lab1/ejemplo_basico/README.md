@@ -3,6 +3,8 @@
 ## Ejemplo 1 ##
 El siguiente ejemplo muestra un uso de las llamadas de sistema Posix [```getpid```](https://pubs.opengroup.org/onlinepubs/9699919799/) y [```sleep```](https://pubs.opengroup.org/onlinepubs/9699919799/).
 
+**Enunciado**: Hacer un programa que despliegue el PID de un proceso. Adicionalmente el programa deberá aumentar cada segundo una variable en el rango 0 a 2.
+
 **Codigo**: [example1.c](./code/example1.c)
 
 ```C
@@ -51,6 +53,7 @@ La salida en pantalla tras ejecutar el código anterior se muestra a continuaci�
 ## Ejemplo 2 ##
 El siguiente ejemplo ademas de las llamadas mostradas previamente ([```getpid```](https://pubs.opengroup.org/onlinepubs/9699919799/) y [```sleep```](https://pubs.opengroup.org/onlinepubs/9699919799/)) se hace uso de la llamada [```fork```](https://pubs.opengroup.org/onlinepubs/9699919799/) para crear un hijo a partir del proceso padre. El proceso hijo creado será un clon del proceso padre.
 
+**Enunciado**: Hacer un programa que genere dos procesos. Por un lado el proceso padre, el cual contará en el rango 0 a 2 cada segundo; por otro lado el proceso hijo, el cual contará también cada segundo números dentro del rango 0 a (2 + 3), es decir, 0 a 5. El programa padre no esperará a que el hijo culmine en caso de acabar primero.
 
 **Codigo**: [example2.c](./code/example2.c)
 
@@ -120,6 +123,8 @@ La salida en pantalla tras ejecutar el código anterior se muestra a continuaci�
 ## Ejemplo 3 ## 
 
 En los ejemplo 1 y 2 se vieron las llamadas: [```getpid```](https://pubs.opengroup.org/onlinepubs/9699919799/), [```sleep```](https://pubs.opengroup.org/onlinepubs/9699919799/) y [```fork```](https://pubs.opengroup.org/onlinepubs/9699919799/). En este ajemplo se agrea la llamada [```wait```](https://pubs.opengroup.org/onlinepubs/9699919799/) cuyo objetivo es hacer que el padre espere que culmine el proceso hijo. Una vez que esto sucede el padre continua su ejecución hasta terminar.
+
+**Enunciado**: Hacer un programa que genere dos procesos. Por un lado el proceso padre, el cual contará en el rango 0 a 2 cada segundo; por otro lado el proceso hijo, el cual contará también cada segundo números dentro del rango 0 a (2 + 3), es decir, 0 a 5. El programa padre **esperará** a que el hijo culmine en caso de acabar primero. 
 
 **Codigo**: [example3.c](./code/example3.c)
 
@@ -201,6 +206,8 @@ La salida en pantalla tras ejecutar el código anterior se muestra a continuaci�
 ## Ejemplo 4 ## 
 
 En este ejemplo se muestra el uso de una de las llamadas de la familia de funciones ```exec``` (```execl```, ```execlp```, ```execle```, ```execv```, ```execvp```). Mas exactamente en este caso se hizo uso de la función [```execl```](https://pubs.opengroup.org/onlinepubs/9699919799/)
+
+**Enunciado**: Hacer un programa que genere dos procesos, sin embargo cada uno de estos tendrá su propia imagen. En lo que respecta al padre, cuando el proceso asociado a este mostrará un mensaje que diga Padre en pantalla, por otro lado, el proceso hijo desplegará de una variable entre 0 y 2 como en el caso del ejemplo 1. Para el caso, el padre deberá llamar al hijo con fork() y luego sobreescribir el clon hijo generado empleando exec().
 
 
 **Código fuente del proceso que será tomado como padre**: [example4_p.c](./code/example4_p.c)
