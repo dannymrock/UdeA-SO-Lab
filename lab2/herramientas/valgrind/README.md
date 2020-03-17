@@ -1,7 +1,20 @@
 
 # Uso basico del valgring #
 
-Tal y como se muestra en [The Valgrind Quick Start Guide](http://valgrind.org/docs/manual/quick-start.html). Asumiendo que ya usted ha compilado y enlazado un programa mediante el siguiente comando
+
+## Antes de empezar ##
+
+En el directorio [referencias](./referencias) se encuentra alguna documentación recolectada que le puede ser útil para la comprensión de la herramienta valgrind. De esta se recomienda dar un vistazo rapido (y volver a profundizar en estos cuando este haciendo el laboratorio si lo ve necesario) a los siguientes documentos:
+1. [Manual Rápido de Valgrind](./referencias/valgrind.pdf)
+2. [Valgrind - Tutorial basico de Memcheck](./referencias/valgrind_slide.pdf)
+3. [Valgrind Debugging	Utility](./referencias/Valgrind.pdf)
+4. [Valgrind](./referencias/Gunter.Valgrind.pdf)
+
+Tambien se sugiere que tenga a la mano [cheatsheet](https://courses.cs.washington.edu/courses/cse333/19sp/sections/02/gdb-valgrind%20cheatsheet.pdf) que resume los comandos basicos de gdb y valgrind.
+
+## Manejo muy basico de valgring ##
+
+Tal y como se muestra en [The Valgrind Quick Start Guide](http://valgrind.org/docs/manual/quick-start.html). Asumiendo que ya usted ha compilado y enlazado un programa mediante el siguiente comando.
 
 ```
 gcc myprog.c -o myprog
@@ -23,8 +36,7 @@ valgrind --leak-check=yes ./myprog arg1 arg2
 
 # Codigos ejemplo #
 
-Los siguientes códigos son tomados del siguiente del tutorial [Manual Rápido de Valgrind](https://users.dcc.uchile.cl/~skreft/material/cc31a/valgrind.pdf). 
-Acceda a este y trate de entender las salidas que allí se muestran pues aceleraran el desarrollo del laboratorio el dia de la sesión presencial. 
+Los siguientes códigos son tomados del siguiente del tutorial [Manual Rápido de Valgrind](https://users.dcc.uchile.cl/~skreft/material/cc31a/valgrind.pdf). Inicialmente compile los códigos y ejecutelos para ver  cual es la salida si no sacan error alguno en tiempo de compilación. Luego, como cada programa tiene su trampa, use valgrind para analizarlo, observe las salidas arrojadas y trate de entenderlas. Esto le será sumamente util pues el dia de la sesión presencial, le ayudará a acelerar el desarrollo del laboratorio.
 
 Para facilitar seguir el tutorial se proporsionan los codigos.
 
@@ -42,6 +54,8 @@ int main(){
 }
 ```
 
+El codigo del **ejemplo1.c** puede ser simulado siguiendo el siguiente [enlace](http://www.pythontutor.com/c.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%7B%0A%20%20int%20*a%3D%28int*%290xFF%3B%0A%20%20*a%3D1%3B%0A%20%20return%20EXIT_SUCCESS%3B%0A%7D&curInstr=0&mode=display&origin=opt-frontend.js&py=c&rawInputLstJSON=%5B%5D)
+
 ##  2. Uso de variables no inicializadas ##
 
 **Código**: ejemplo2.c
@@ -56,6 +70,8 @@ int main(){
   return EXIT_SUCCESS;
 }
 ```
+
+El codigo del **ejemplo2.c** puede ser simulado siguiendo el siguiente [enlace](http://www.pythontutor.com/c.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20x%3B%0A%20%20printf%28%22%25d%5Cn%22,x%29%3B%0A%20%20return%20EXIT_SUCCESS%3B%0A%7D&curInstr=0&mode=display&origin=opt-frontend.js&py=c&rawInputLstJSON=%5B%5D)
 
 ## 3. Free inválido ##
 
@@ -73,6 +89,8 @@ int main(){
 }
 ```
 
+El codigo del **ejemplo3_1.c** puede ser simulado siguiendo el siguiente [enlace](http://www.pythontutor.com/c.html#code=%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%7B%0A%20%20char%20*a%3D%28char%20*%290xFF%3B%0A%20%20free%28a%29%3B%0A%20%20return%20EXIT_SUCCESS%3B%0A%7D&curInstr=0&mode=display&origin=opt-frontend.js&py=c&rawInputLstJSON=%5B%5D)
+
 ### Caso 2 ###
 
 **Código**: ejemplo3_2.c
@@ -88,6 +106,8 @@ int main(){
 }
 ```
 
+El codigo del **ejemplo3_2.c** puede ser simulado siguiendo el siguiente [enlace](http://www.pythontutor.com/c.html#code=%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%7B%0A%20%20char%20*a%3D%28char%20*%29malloc%28sizeof%28char%29%29%3B%0A%20%20free%28a%29%3B%0A%20%20free%28a%29%3B%0A%20%20return%20EXIT_SUCCESS%3B%0A%7D&curInstr=0&mode=display&origin=opt-frontend.js&py=c&rawInputLstJSON=%5B%5D)
+
 ## 4. Parámetros con permisos inadecuados ##
 
 **Código**: ejemplo4.c
@@ -99,10 +119,15 @@ int main(){
 int main(){
   char *arr=(char *)malloc(10*sizeof(char));
   int *arr2=(int *)malloc(sizeof(int));
-  write(1,arr,10);/*Trata de escribir en la salida estandar 10 caracteres, pero hay basura*/
-  exit(arr2[0]);/*se trata de salir con un valo no inicializado*/
+  write(1,arr,10); // Trata de escribir en la salida 
+                   // estandar 10 caracteres, pero hay 
+                   // basura*
+  exit(arr2[0]);   // Se trata de salir con un valo no 
+                   // inicializado
 }
 ```
+
+El codigo del **ejemplo4.c** puede ser simulado siguiendo el siguiente [enlace](http://www.pythontutor.com/c.html#code=%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cunistd.h%3E%0A%0Aint%20main%28%29%7B%0A%20%20char%20*arr%3D%28char%20*%29malloc%2810*sizeof%28char%29%29%3B%0A%20%20int%20*arr2%3D%28int%20*%29malloc%28sizeof%28int%29%29%3B%0A%20%20write%281,arr,10%29%3B%20%20//Trata%20de%20escribir%20en%20la%20salida%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20//%20estandar%2010%20caracteres,%20pero%20hay%20basura%0A%20%20exit%28arr2%5B0%5D%29%3B%20%20%20%20//se%20trata%20de%20salir%20con%20un%20valo%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20//no%20inicializado%0A%7D&curInstr=0&mode=display&origin=opt-frontend.js&py=c&rawInputLstJSON=%5B%5D)
 
 ## 5. Detección de memory leaks ##
 
@@ -119,6 +144,8 @@ int main(){
   return EXIT_SUCCESS;
 }
 ```
+
+El codigo del **ejemplo5.c** puede ser simulado siguiendo el siguiente [enlace](http://www.pythontutor.com/c.html#code=%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%7B%0A%20%20int%20*a%3D%28int%20*%29malloc%281024*sizeof%28int%29%29%3B%0A%20%20int%20*b%3D%28int%20*%29malloc%2810*sizeof%28int%29%29%3B%0A%20%20*a%3D1%3B%0A%20%20b%3D%28int%20*%29NULL%3B%0A%20%20return%20EXIT_SUCCESS%3B%0A%7D&curInstr=0&mode=display&origin=opt-frontend.js&py=c&rawInputLstJSON=%5B%5D)
 
 ## 6. Observación sobre variables no inicializadas ##
 
@@ -137,6 +164,8 @@ int main(){
   return EXIT_SUCCESS;
 }
 ```
+
+El codigo del **ejemplo6.c** puede ser simulado siguiendo el siguiente [enlace](http://www.pythontutor.com/c.html#code=%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%7B%0A%20%20int%20i,%20j%3B%0A%20%20int%20a%5B10%5D,%20b%5B10%5D%3B%0A%20%20for%20%28%20i%20%3D%200%3B%20i%20%3C%2010%3B%20i%2B%2B%20%29%20%7B%0A%20%20%20%20j%20%3D%20a%5Bi%5D%3B%0A%20%20%20%20b%5Bi%5D%20%3D%20j%3B%0A%20%20%7D%0A%20%20return%20EXIT_SUCCESS%3B%0A%7D&curInstr=0&mode=display&origin=opt-frontend.js&py=c&rawInputLstJSON=%5B%5D)
 
 ## Otros recursos ##
 1. http://www.st.ewi.tudelft.nl/koen/ti2725-c/
