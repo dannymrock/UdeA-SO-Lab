@@ -1,4 +1,4 @@
-# Introducción al manejo de gdb #
+# Introducción muy basica al manejo de gdb #
 
 ## Antes de empezar ##
 
@@ -224,22 +224,258 @@ En la siguiente figura se muestra el resultado. Observe los cambios:
 
 #### Moviendonos entre los breakpoints y observando la evolución de las variables ####
 
+Para movernos entre los breakpoints se usa la instrucción ```[c]ontinue``` (donde ```c``` es el abreviado de ```continue```) sin argumentos (pues tambien admite argumentos pero para nuestros propositos no lo vamos a profundizar). Por otro lado, para ver el estado de las variables se procede a usar el comando ```print```. Realicemos las siguientes tareas para comprender en su forma mas basica el uso conjunto de estas:
+
+1. Agregue un breakpoint en la linea 17.
+
+```
+# Comando 1
+b 17
+
+# Comando 2
+info breakpoints
+```
+
+El resultado se muestra en la siguiente figura:
+
+![continue1](continue1.jpg)
+
+2. Empieze la ejecución del programa con run. Observe donde se detiene el programa e imprima el contenido de las variables ```f1``` y ```f2```.
+
+```
+# Comando 3
+run
+
+# Comando 4
+print f1
+
+# Comando 5
+print f2
+```
+
+El resultado se muestra en la siguiente figura:
+
+![continue2](continue2.jpg)
+
+Notese en la figura anterior, que la linea en la que se encuentra el primer breakpoint queda resaltada. Tenga en cuenta que esta, aun no se he ejecutado.
+
+3. Ejecute el comando ```continue``` y luego imprima el contenido de las variables ```fac``` y ```f1```. ¿Que es lo que se imprime para estas y por que?
+
+```
+# Comando 6
+c
+
+# Comando 7
+print fac
+
+# Comando 8
+print f1
+```
+
+El resultado se muestra en la siguiente figura:
+
+![continue3](continue3.jpg)
+
+Notese que ya el programa se encuentra en la linea **15**. 
+
+4. Agregue un breakpoint en la linea **17** y verifique que este se ha agregado:
+
+```
+# Comando 9
+b 17
+
+# Comando 10
+info breakpoints
+```  
+
+La salida se muestra a continuación:
+
+![continue4](continue4.jpg)
+
+5. Proceda con un ```continue``` e imprima ```fac```.
+
+```
+# Comando 11
+c
+
+# Comando 12
+print fac
+``` 
+
+La salida se muestra a continuación:
+
+![continue5](continue5.jpg)
+
+6. Ejecute dos veces ```continue``` e imprima el valor de la variable ```fac```.
 
 
+```
+# Comando 13
+c
+
+# Comando 14
+c
+
+# Comando 15
+print fac
+``` 
+
+La salida se muestra a continuación (**nota**: No se ejecuto aqui exactamente la misma lista de comandos, pues, se ejecuto un print mas despues del primer continue):
+
+![continue6](continue6.jpg)
+
+7. Mire el numero al que corresponde el breakpoint de la linea **17**, luego deshabilitelo y compruebe esto.
+
+```
+# Comando 16
+info breakpoints
+
+# Comando 17 (corresponde al breakpoint 6)
+disable 6
+
+# Comando 18
+info breakpoints
+``` 
+
+La salida se muestra a continuación:
+
+![continue7](continue7.jpg)
+
+1. Nuevamente ejecute la cantidad de comandos ```continue``` hasta que el codigo llegue al breakpoint de la linea **9**. Luego imprima le contenido de las variables ```f1``` y ```f2```.
+
+```
+# Comando 19
+c
+
+# Comando 20
+c
+
+# Comando 21
+print f1
+
+# Comando 22
+print f2
+``` 
+
+La salida se muestra a continuación:
+
+![continue8](continue8.jpg)
 
 
+#### Step - Next - Finish ####
 
-Entrando al codigo 
+Estos dos comandos permiten ejecución paso a paso pero tienen una diferencia sutil. En lo que respecta al comando ```[s]tep```, este ejecuta la siguiente linea de codigo fuente pero si esta esta invocando una función, se entrará en esta; en lo que se refiere al comando ```[n]ext```, este tambien ejecuta la proxima linea de código pero a diferencia de ```step``` no desciente a la función que se invoca si la proxima linea del codigo esta asociada a esta.
+
+Otro comando importante es el ```finish``` que continua la ejecución de una función hasta que encuentra el ```return``` asociado a esta.
+
+Para comprender estos comandos un poco mas vamos a realizar las siguientes tareas.
+
+1. Salgase del ```gdb``` y luego ingrese nuevamente cargando el archivo ejecutable ```main.out```.
+
+```
+quit
+```
+
+Iniciando nuevamente el gdb y cargando ```main.out```
+
+```
+gdb -tui main.out
+```
+
+2. Coloque un breakpoint en la función main e inicie la ejecución:
+
+```
+# Comando 1
+b main
+
+# Comando 2
+run
+```
+
+La salida se muestra a continuación:
+
+![nsf1](nsf1.jpg)
+
+3. Ejecute el comando ```step``` y luego imprima las variables ```num``` y ```fac```:
 
 
-Visualizando variables
-poniendo breakpoints
+```
+# Comando 4
+step
+
+# Comando 5
+print num
+
+# Comando 6
+print fac
+```
+
+La salida se muestra a continuación:
+
+![nsf2](nsf2.jpg)
+
+4. Ejecute el numero de veces que sea necesario el comando step imprimiento la variable  ```fac``` para ver su evolución hasta que esta alcance el valor de 2:
+
+```
+# Comando 7
+s
+
+# Comando 8
+print fac
+
+# Comando 9
+# Continuar reiterativamente ele proceso anterior
+```
+
+La salida se muestra a continuación:
+
+![nsf3](nsf3.jpg)
+
+5. Ejecute el comando ```finish``` e imprima el valor de ```f1```:
+
+```
+finish
+
+print f1
+```
+
+La salida se muestra a continuación:
+
+![nsf4](nsf4.jpg)
+
+
+6. Ejecute dos veces el comando ```next``` imprimiendo el valor de ```f2```  despues de cada uno de estos:
+
+```
+n
+
+print f2
+
+n
+
+print f2
+```
+
+La salida se muestra a continuación:
+
+![nsf5](nsf5.jpg)
+
+7. Ejecute el comando ```continue``` para acabar:
+
+
+```
 continue
+```
 
-Stepp
-next
+La salida se muestra a continuación:
 
-info
+![nsf6](nsf6.jpg)
 
 
-http://www.yolinux.com/TUTORIALS/GDB-Commands.html
+## Conclusiones ##
+
+Hasta el momento solo vimos el uso mas básico del debuger de linux en modo texto. Esta es una herramienta sumamente poderosa y cuenta con una gran cantidad de comandos para probar codigo fuente. El proposito del curso no es profundizar en el manejo de este por lo que lo animamos a que lo cacharee, esa es la mejor forma de aprender.
+
+## Refencias ##
+Ademas de los enlaces y fuentes ya compartidas agregamos algunos enlaces mas para que consulte y profundice en el tema:
+1. [GNU GDB Debugger Command Cheat Sheet](http://www.yolinux.com/TUTORIALS/GDB-Commands.html)
