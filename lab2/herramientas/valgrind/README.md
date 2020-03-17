@@ -4,6 +4,8 @@
 
 ## Antes de empezar ##
 
+Se recomienda que vea el video [3ra Charla 1c 2019 - Valgrind](https://www.youtube.com/watch?v=knRei6OBU4Q&t=248s) el cual cuenta con un tutorial que puede ser consultado en el siguiente [enlace](https://docs.google.com/document/d/1flOJ2P2g9UGVRiruuA4OCF6nucbN_BWVI0WDlYTJNf4/edit).
+
 En el directorio [referencias](./referencias) se encuentra alguna documentación recolectada que le puede ser útil para la comprensión de la herramienta valgrind. De esta se recomienda dar un vistazo rapido (y volver a profundizar en estos cuando este haciendo el laboratorio si lo ve necesario) a los siguientes documentos:
 1. [Manual Rápido de Valgrind](./referencias/valgrind.pdf)
 2. [Valgrind - Tutorial basico de Memcheck](./referencias/valgrind_slide.pdf)
@@ -11,6 +13,7 @@ En el directorio [referencias](./referencias) se encuentra alguna documentación
 4. [Valgrind](./referencias/Gunter.Valgrind.pdf)
 
 Tambien se sugiere que tenga a la mano [cheatsheet](https://courses.cs.washington.edu/courses/cse333/19sp/sections/02/gdb-valgrind%20cheatsheet.pdf) que resume los comandos basicos de gdb y valgrind.
+
 
 ## Manejo muy basico de valgring ##
 
@@ -168,29 +171,30 @@ int main(){
 El codigo del **ejemplo6.c** puede ser simulado siguiendo el siguiente [enlace](http://www.pythontutor.com/c.html#code=%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%7B%0A%20%20int%20i,%20j%3B%0A%20%20int%20a%5B10%5D,%20b%5B10%5D%3B%0A%20%20for%20%28%20i%20%3D%200%3B%20i%20%3C%2010%3B%20i%2B%2B%20%29%20%7B%0A%20%20%20%20j%20%3D%20a%5Bi%5D%3B%0A%20%20%20%20b%5Bi%5D%20%3D%20j%3B%0A%20%20%7D%0A%20%20return%20EXIT_SUCCESS%3B%0A%7D&curInstr=0&mode=display&origin=opt-frontend.js&py=c&rawInputLstJSON=%5B%5D)
 
 ## Otros recursos ##
-1. http://www.st.ewi.tudelft.nl/koen/ti2725-c/
-2. http://web.mit.edu/amcp/drg/valgrind-howto.pdf
-3. http://www.valgrind.org/docs/manual/valgrind_manual.pdf
-4. http://www.st.ewi.tudelft.nl/koen/ti2725-c/valgrind.pdf
-5. https://users.dcc.uchile.cl/~skreft/material/cc31a/valgrind.pdf
-6. https://www.tldp.org/HOWTO/pdf/Valgrind-HOWTO.pdf
-7. https://www.phys.uconn.edu/~rozman/Courses/P2200_14F/downloads/valgrind-quick-start.pdf
-8. https://aleksander.es/data/valgrind-memcheck.pdf
-9. http://www.liv.ic.unicamp.br/~rteixeira/ensino/valgrind.pdf
-10. http://www.betterembedded.it/media/conference/slides/detecting-memory-leaks-with-valgrind.pdf
-11. http://www.mathcs.richmond.edu/~lbarnett/cs240/assignments/lab4.pdf
-12. http://pages.cs.wisc.edu/~bart/537/valgrind.html
-13. https://www.cprogramming.com/debugging/valgrind.html
-14. http://cs.ecs.baylor.edu/~donahoo/tools/valgrind/
-15. https://www.thegeekstuff.com/2011/11/valgrind-memcheck/
-16. https://riptutorial.com/c/topic/2674/valgrind
-17. https://www.ic.unicamp.br/~rafael/cursos/2s2017/mc202/valgrind.html
-18. https://en.wikipedia.org/wiki/Valgrind
-19. https://heeris.id.au/2016/valgrind-gdb/
-20. https://waterprogramming.wordpress.com/2018/03/25/making-valgrind-easy/
-21. https://github.com/damarquezg/Tools-Cheat-Sheet/wiki/Valgrind
-22. http://cs.ecs.baylor.edu/~donahoo/tools/valgrind/
-23. https://linoxide.com/tools/valgrind-memcheck/
-24. https://www.tldp.org/HOWTO/pdf/Valgrind-HOWTO.pdf
-25. https://courses.cs.washington.edu/courses/cse333/19sp/sections/02/gdb-valgrind%20cheatsheet.pdf
+1. https://drbfraser.es-cam.com/
+2. http://www.st.ewi.tudelft.nl/koen/ti2725-c/
+3. http://web.mit.edu/amcp/drg/valgrind-howto.pdf
+4. http://www.valgrind.org/docs/manual/valgrind_manual.pdf
+5. http://www.st.ewi.tudelft.nl/koen/ti2725-c/valgrind.pdf
+6. https://users.dcc.uchile.cl/~skreft/material/cc31a/valgrind.pdf
+7. https://www.tldp.org/HOWTO/pdf/Valgrind-HOWTO.pdf
+8. https://www.phys.uconn.edu/~rozman/Courses/P2200_14F/downloads/valgrind-quick-start.pdf
+9. https://aleksander.es/data/valgrind-memcheck.pdf
+10. http://www.liv.ic.unicamp.br/~rteixeira/ensino/valgrind.pdf
+11. http://www.betterembedded.it/media/conference/slides/detecting-memory-leaks-with-valgrind.pdf
+12. http://www.mathcs.richmond.edu/~lbarnett/cs240/assignments/lab4.pdf
+13. http://pages.cs.wisc.edu/~bart/537/valgrind.html
+14. https://www.cprogramming.com/debugging/valgrind.html
+15. http://cs.ecs.baylor.edu/~donahoo/tools/valgrind/
+16. https://www.thegeekstuff.com/2011/11/valgrind-memcheck/
+17. https://riptutorial.com/c/topic/2674/valgrind
+18. https://www.ic.unicamp.br/~rafael/cursos/2s2017/mc202/valgrind.html
+19. https://en.wikipedia.org/wiki/Valgrind
+20. https://heeris.id.au/2016/valgrind-gdb/
+21. https://waterprogramming.wordpress.com/2018/03/25/making-valgrind-easy/
+22. https://github.com/damarquezg/Tools-Cheat-Sheet/wiki/Valgrind
+23. http://cs.ecs.baylor.edu/~donahoo/tools/valgrind/
+24. https://linoxide.com/tools/valgrind-memcheck/
+25. https://www.tldp.org/HOWTO/pdf/Valgrind-HOWTO.pdf
+26. https://courses.cs.washington.edu/courses/cse333/19sp/sections/02/gdb-valgrind%20cheatsheet.pdf
 
