@@ -479,3 +479,4 @@ Hasta el momento solo vimos el uso mas básico del debuger de linux en modo text
 ## Refencias ##
 Ademas de los enlaces y fuentes ya compartidas agregamos algunos enlaces mas para que consulte y profundice en el tema:
 1. [GNU GDB Debugger Command Cheat Sheet](http://www.yolinux.com/TUTORIALS/GDB-Commands.html)
+2. [Quick Guide to Gdb](https://condor.depaul.edu/glancast/373class/docs/gdb.html)
