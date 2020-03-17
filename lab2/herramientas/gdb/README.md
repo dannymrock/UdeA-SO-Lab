@@ -11,7 +11,7 @@ Revise el contenido de apoyo descrito a continuación:
 Mas documentos pueden ser encontrados en el directorio [referencias](./referencias)
 
 ## Paso 2 ##
-Complemente el contenido anterior viendo el video: [GDB](https://www.youtube.com/watch?reload=9&v=G4OIp_5fF1A). 
+Complemente el contenido anterior viendo el video: [GDB](https://www.youtube.com/watch?reload=9&v=G4OIp_5fF1A). En este se hace uso de una aplicación online muy buena llamada [https://ide.cs50.io/](https://ide.cs50.io/). 
 
 ## Paso 3 ##
 Para el laboratorio se hará uso del **gdb** disponible en la maquina con linux. Sin embargo lo animamos a que haga uso de otras alternativas más amigables como [onlinegdb](https://www.onlinegdb.com/) o [gdbgui](https://www.gdbgui.com/).
