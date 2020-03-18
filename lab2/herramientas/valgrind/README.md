@@ -4,7 +4,7 @@
 
 ## Antes de empezar ##
 
-Se recomienda que vea el video [3ra Charla 1c 2019 - Valgrind](https://www.youtube.com/watch?v=knRei6OBU4Q&t=248s) el cual cuenta con un tutorial que puede ser consultado en el siguiente [enlace](https://docs.google.com/document/d/1flOJ2P2g9UGVRiruuA4OCF6nucbN_BWVI0WDlYTJNf4/edit).
+Se recomienda que vea el video [3ra Charla 1c 2019 - Valgrind](https://www.youtube.com/watch?v=knRei6OBU4Q&t=248s) el cual cuenta con un tutorial que puede ser consultado en el siguiente [enlace](https://docs.google.com/document/d/1flOJ2P2g9UGVRiruuA4OCF6nucbN_BWVI0WDlYTJNf4/edit#heading=h.733pnu8yt7d4).
 
 En el directorio [referencias](./referencias) se encuentra alguna documentación recolectada que le puede ser útil para la comprensión de la herramienta valgrind. De esta se recomienda dar un vistazo rapido (y volver a profundizar en estos cuando este haciendo el laboratorio si lo ve necesario) a los siguientes documentos:
 1. [Manual Rápido de Valgrind](./referencias/valgrind.pdf)
