@@ -41,6 +41,8 @@ La salida en pantalla tras ejecutar el c처digo anterior se muestra a continuaci�
 
 ![ejemplo1](./images/salida_ejemplo1.jpg)
 
+**Ejecuci처n online**: El programa anterior puede ser ejecutado online en el siguiente [link ejemplo 1](https://repl.it/join/kcrhrwkk-henryalbertoalb)
+
 **Llamadas**: A continuaci처n se muestra el diagrama de llamadas del ejemplo anterior:
 
 ![ex1_calls](./images/ex1_calls.png)
@@ -48,7 +50,6 @@ La salida en pantalla tras ejecutar el c처digo anterior se muestra a continuaci�
 **Familia de procesos**: La familia de procesos se muestra a continuaci처n:
 
 ![ex1_calls](./images/ex1_fam.png)
-
 
 ## Ejemplo 2 ##
 El siguiente ejemplo ademas de las llamadas mostradas previamente ([```getpid```](https://pubs.opengroup.org/onlinepubs/9699919799/) y [```sleep```](https://pubs.opengroup.org/onlinepubs/9699919799/)) se hace uso de la llamada [```fork```](https://pubs.opengroup.org/onlinepubs/9699919799/) para crear un hijo a partir del proceso padre. El proceso hijo creado ser찼 un clon del proceso padre.
@@ -111,6 +112,8 @@ gcc -Wall example2.c -o example2.out
 La salida en pantalla tras ejecutar el c처digo anterior se muestra a continuaci처n:
 
 ![ejemplo2](./images/salida_ejemplo2.jpg)
+
+**Ejecuci처n online**: El programa anterior puede ser ejecutado online en el siguiente [link ejemplo 2](https://repl.it/join/xvytfcxp-henryalbertoalb)
 
 **Llamadas**: El diagrama de llamadas se muestra a continuaci처n. Notese que una vez el proceso hijo se crea este sigue una existencia a parte del proceso padre, pero en ambos casos ambos estaran relacionados el mismo codigo ejecutable (**ejemplo2.out**). 
 
@@ -193,6 +196,8 @@ gcc -Wall example3.c -o example3.out
 La salida en pantalla tras ejecutar el c처digo anterior se muestra a continuaci처n:
 
 ![ejemplo3](./images/salida_ejemplo3.jpg)
+
+**Ejecuci처n online**: El programa anterior puede ser ejecutado online en el siguiente [link ejemplo 3](https://repl.it/join/gmynjkxr-henryalbertoalb)
 
 **Llamadas**: El diagrama de llamadas que se muestra a continuaci처n muestr que el padre espera a que el hijo culmine.
 
@@ -289,6 +294,8 @@ gcc -Wall /example4_h.c -o /example4_h.out
 La salida en pantalla tras ejecutar el c처digo anterior se muestra a continuaci처n; notese que solo se llama al proceso padre:
 
 ![ejemplo4](./images/salida_ejemplo4.jpg)
+
+**Ejecuci처n online**: No hey enlace por lo tanto la demostraci처n se muestra de manera local.
 
 **Llamadas**: Notese que en el diagrama siguiente que una vez el proceso hijo llama al ```exec``` la imagen del ejecutable procediente del ```fork``` (la misma del padre) es reemplazada por la imagen del ejecutable pasada como parametro a la llamada ```exec```, la cual suele ser distinta que la del padre.
 
