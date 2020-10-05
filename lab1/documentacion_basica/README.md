@@ -1,10 +1,180 @@
 # Servicios POSIX para la gestión de procesos #
 
+## Introducción inicial ##
+
+Esta sección tiene como base el capitulo [Interlude: Process API](http://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf) del libro de Remzi y tablas que resumen la información sobre algunas funciones del API Posix asociado a los procesos. 
+
+
+
+### Creación de un nuevo proceso - clonar ###
+
+Para crear un nuevo proceso se emplea la llamada a sistema ```fork```. El nuevo proceso creado tiene su propia copia del **espacio de direcciones**, los **registros** y el **PC**.
+
+**Ejemplo**: En el siguiente ejemplo se hace uso de llamados a sistema como ```fork```, ```getpid``` y ```exit```. (**Código**: [p1.c](https://github.com/remzi-arpacidusseau/ostep-code/blob/master/cpu-api/p1.c)).
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main(int argc, char *argv[]) {
+  printf("hello world (pid:%d)\n", (int) getpid());
+  int rc = fork();
+  if (rc < 0) {
+    // fork failed; exit
+    fprintf(stderr, "fork failed\n");
+    exit(1);
+  } 
+  else if (rc == 0) {
+    // child (new process)
+    printf("hello, I am child (pid:%d)\n", (int) getpid());
+  } 
+  else {
+    // parent goes down this path (original process)
+    printf("hello, I am parent of %d (pid:%d)\n",
+	       rc, (int) getpid());
+  }
+  return 0;
+}
+```
+
+El programa puede ser ejecutato online en el [link 1](https://repl.it/join/pfdwwiqy-henryalbertoalb)
+
+### Poniendo a esperar al padre por la terminación de su hijo ###
+
+La llamada ```wait``` no retorna hasta que un hijo se halla ejecutado y terminado de modo que es empleada por el proceso padre para esperar a que su hijo culmine. 
+
+**Ejemplo**: (**Código**: [p2.c](https://github.com/remzi-arpacidusseau/ostep-code/blob/master/cpu-api/p2.c)).
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+int main(int argc, char *argv[]) {
+  printf("hello world (pid:%d)\n", (int) getpid());
+  int rc = fork();
+  if (rc < 0) {
+    // fork failed; exit
+    fprintf(stderr, "fork failed\n");
+    exit(1);
+  } 
+  else if (rc == 0) {
+    // child (new process)
+    printf("hello, I am child (pid:%d)\n", (int) getpid());
+    sleep(1);
+  } 
+  else {
+    // parent goes down this path (original process)
+    int wc = wait(NULL);
+    printf("hello, I am parent of %d (wc:%d) (pid:%d)\n", rc, wc, (int) getpid());
+  }
+  return 0;
+}
+```
+
+El programa puede ser ejecutato online en el [link 2](https://repl.it/join/kbgpubpe-henryalbertoalb)
+
+
+### Corriendo un programa diferente ###
+
+Haciendo uso de la familia de llamadas ```exec``` es posible correr un programa que sea diferente del programa que llama.
+
+**Ejemplo**: (**Código**: [p3.c](https://github.com/remzi-arpacidusseau/ostep-code/blob/master/cpu-api/p3.c)).
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/wait.h>
+
+int main(int argc, char *argv[]) {
+  printf("hello world (pid:%d)\n", (int) getpid());
+  int rc = fork();
+  if (rc < 0) {
+    // fork failed; exit
+    fprintf(stderr, "fork failed\n");
+    exit(1);
+  } else if (rc == 0) {
+    // child (new process)
+    printf("hello, I am child (pid:%d)\n", (int) getpid());
+    char *myargs[3];
+    myargs[0] = strdup("wc");   // program: "wc" (word count)
+    myargs[1] = strdup("p3.c"); // argument: file to count
+    myargs[2] = NULL;           // marks end of array
+    execvp(myargs[0], myargs);  // runs word count
+    printf("this shouldn't print out");
+  } else {
+    // parent goes down this path (original process)
+    int wc = wait(NULL);
+    printf("hello, I am parent of %d (wc:%d) (pid:%d)\n",
+	       rc, wc, (int) getpid());
+  }
+  return 0;
+}
+```
+
+El programa puede ser ejecutato online en el [link 3](https://repl.it/join/qwwyjcfh-henryalbertoalb)
+
+
+### Redirección ###
+
+Se desea contar contenido 
+
+```
+wc p4.c > p4.output
+```
+
+A continuación se muestra el siguiente codigo donde se ilustra como se implementa el anterior comando empleando llamadas de sistema:
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <fcntl.h>
+#include <assert.h>
+#include <sys/wait.h>
+
+int main(int argc, char *argv[]) {
+  int rc = fork();
+  if (rc < 0) {
+    // fork failed; exit
+    fprintf(stderr, "fork failed\n");
+    exit(1);
+  } 
+  else if (rc == 0) {
+	  
+    // child: redirect standard output to a file
+	close(STDOUT_FILENO); 
+	open("./p4.output", O_CREAT|O_WRONLY|O_TRUNC, S_IRWXU);
+	// now exec "wc"...
+    char *myargs[3];
+    myargs[0] = strdup("wc");   // program: "wc" (word count)
+    myargs[1] = strdup("p4.c"); // argument: file to count
+    myargs[2] = NULL;           // marks end of array
+    execvp(myargs[0], myargs);  // runs word count
+  } 
+  else {
+    // parent goes down this path (original process)
+    int wc = wait(NULL);
+    assert(wc >= 0);
+  }
+  return 0;
+}
+```
+
+El programa puede ser ejecutato online en el [link 4](https://repl.it/join/bvpbsgxt-henryalbertoalb)
+
+----
+
 ## Identificación de procesos ##
 
 Se identifica a cada proceso por medio de un número único con representación entera. Este es conocido como el identificador del proceso (que es de tipo **pid_t**). A continuación se describen algunas de las principales funciones empleadas para este fin:
 
-### pid_t getpid(void) ###
+### ```pid_t getpid(void)``` ###
 
 Este servicio devuelve el identificador del proceso que realiza la llamada.
 
@@ -18,8 +188,7 @@ La siguiente tabla detalla mas a fondo esta función:
 |**Parámetros de entrada**|No tiene|
 |**Valor retornado**|Retorna el valor con el ID efectivo corresponde al bit ID establecido en el fichero que se está ejecutando.|
 
-
-### pid_t getppid(void) ###
+### ```pid_t getppid(void)``` ###
 
 Devuelve el identificador del proceso padre
 
@@ -34,7 +203,7 @@ La siguiente tabla detalla mas a fondo esta función:
 |**Valor retornado**|Siempre tendrá éxito y no se reservará ningún valor de retorno para indicar un error.|
 
 
-### uid_t getuid(void) ###
+### ```uid_t getuid(void)``` ###
 
 Devuelve el identificador del usuario real (usuario que ejecuta el proceso).
 
@@ -48,7 +217,7 @@ La siguiente tabla detalla mas a fondo esta función:
 |**Parámetros de entrada**|No tiene|
 |**Valor retornado**|Retorna el identificador del usuario real del proceso de llamada.|
 
-### uid_t geteuid(void) ###
+### ```uid_t geteuid(void)``` ###
 
 Devuelve el identificador del usuario efectivo (usuario en el que se ejecuta el proceso).
 
@@ -62,7 +231,7 @@ La siguiente tabla detalla mas a fondo esta función:
 |**Parámetros de entrada**|No tiene|
 |**Valor retornado**|Entero ID de el usuario efectivo (usuario en el cual se está ejecutando el proceso, no confundir con el usuario que lanzó el proceso).|
 
-### gid_t getgid(void) ###
+### ```gid_t getgid(void)``` ###
 
 Devuelve el identificador del grupo real.
 
@@ -76,15 +245,15 @@ La siguiente tabla detalla mas a fondo esta función:
 |**Parámetros de entrada**|No tiene|
 |**Valor retornado**|Retorna valor con el ID del grupo del proceso llamante.|
 
-### gid_t getegid(void) ###
+### ```gid_t getegid(void)``` ###
 
-Devuelve el identificador del grupo efectivo. La tabla no esta.
+Devuelve el identificador del grupo efectivo. La tabla no esta en este documento.
 
 ## Gestión de procesos ##
 
 Este grupo de funciones permite la creacion y manipulacion del estado de los procesos. 
 
-### fork ###
+### ```fork``` ###
 
 Permite crear procesos: Se realiza una clonación del proceso que lo solicita (conocido como proceso padre). El nuevo proceso se conoce como proceso hijo.
 
@@ -96,7 +265,7 @@ Permite crear procesos: Se realiza una clonación del proceso que lo solicita (c
 |**Parámetros de entrada**|No tiene|
 |**Valor retornado**|Cuando la ejecución de la función es exitosa se retorna un valor diferente para el padre y para el hijo:<br>- Al padre se le retorna el PID del hijo. <br> - Al hijo se le retorna 0.<br><br>El valor retornado será -1 en caso de que la llamada falle y no se pueda crear un proceso hijo.|
 
-### exe ###
+### ```exe``` ###
 
 Familia de funciones que permiten cambiar el programa que está ejecutando el proceso.
 
@@ -108,7 +277,7 @@ Familia de funciones que permiten cambiar el programa que está ejecutando el pr
 |**Parámetros de entrada**|- **path o file**: Cadena de caracteres que contiene el nombre del nuevo programa a ejecutar con su ubicación, **/bin/cp** por ejemplo.<br>**const char *arg**: Lista de uno o más apuntadores a cadenas de caracteres que representan la lista de argumentos que recibirá el programa llamado. Por convención, el primer argumento deberá contener el nombre del archivo que contiene el programa ejecutado. El último elemento de la lista debe ser un apuntador a NULL.<br>**char *const arg[]**: Array de punteros a cadenas de caracteres que representan la lista de argumentos que recibirá el programa llamado. Por convención,  el primer argumento (arg0) deberá tener el  nombre del archivo que contiene el programa ejecutado y el último elemento deberá ser un apuntador a NULL.<br>**char *const envp[]**: Array de apuntadores a cadenas que contienen el entorno de ejecución (variables de entorno) que tendrá accesible el nuevo proceso. El último elemento deberá ser un apuntador a NULL.|
 
 
-### exit ###
+### ```exit``` ###
 
 Termina la ejecución de un proceso y envía el valor de “status” al padre. Es similar a “return” de la función “main”.
 
@@ -121,7 +290,7 @@ Termina la ejecución de un proceso y envía el valor de “status” al padre. 
 |**Valor retornado**|Ninguno.|
 
 
-### wait ###
+### ```wait``` ###
 
 Permite que un proceso padre espere hasta que finalice la ejecución de un proceso hijo. El proceso padre se queda bloqueado hasta que termina el proceso hijo. Ambas llamadas permiten obtener información sobre el estado de terminación.
 
@@ -137,7 +306,7 @@ Permite que un proceso padre espere hasta que finalice la ejecución de un proce
 ### pwaitpid ###
 
 
-### sleep ###
+### ```sleep``` ###
 
 Suspende el proceso durante un número de segundos. El proceso despierta cuando ha transcurrido el tiempo o cuando el proceso recibe una señal.
 
@@ -149,7 +318,7 @@ Suspende el proceso durante un número de segundos. El proceso despierta cuando 
 |**Parámetros de entrada**|Número de segundos que se quiere esperar.|
 |**Valor retornado**|Retorna cero si el tiempo solicitado a transcurrido, o el número de segundos que quedan para “dormir”, si la llamada fue interrumpida por un “signal handler”|
 
-### kill ###
+### ```kill``` ###
 
 Permite terminar de manera forzada un proceso un proceso.
 
